@@ -26,7 +26,9 @@ RUN apt-get update \
 RUN sed -i 's/\/run\/php\/php[0-9].[0-9]-fpm.sock/9000/' /etc/php/8.1/fpm/pool.d/www.conf \
     # Fix php-fpm can't create PID file
     && mkdir /run/php \
-    && chmod 755 /run/php
+    && chmod 755 /run/php \
+    # Don't clear environment variables
+    && sed -i 's/\;clear_env/clear_env/' /etc/php/8.1/fpm/pool.d/www.conf
 
 # Tell that port 9000 is available to be exposed
 EXPOSE 9000
