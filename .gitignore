@@ -6,3 +6,5 @@
 *.tmp
 *.lock
 /config.php
+mysql-data/
+.env
